@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线部署指南 - 获取永久访问链接</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #667eea;
+        }
+        .method {
+            background: #f8f9ff;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+            border-left: 6px solid #667eea;
+            position: relative;
+        }
+        .method::before {
+            content: attr(data-badge);
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 10px 10px 10px 0;
+            transition: all 0.3s;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        .btn-large {
+            font-size: 18px;
+            padding: 20px 40px;
+        }
+        .steps {
+            background: white;
+            border: 2px solid #e1e8ed;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 8px;
+        }
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .success-box {
+            background: #d4edda;
+            border: 2px solid #c3e6cb;
+            color: #155724;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffeaa7;
+            color: #856404;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .code-box {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .feature {
+            background: white;
+            border: 1px solid #e1e8ed;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .hero {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        .hero h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>🌐 获取永久访问链接</h1>
+            <p style="font-size: 1.2em;">让任何人在任何地方都能访问您的图片查单及排单系统</p>
+        </div>
+
+        <div class="success-box">
+            <strong>🎯 目标：</strong>获得一个永久的网络链接，任何人在全球任何地方都可以通过这个链接访问您的系统
+        </div>
+
+        <!-- 方案一：Netlify - 最推荐 -->
+        <div class="method" data-badge="最推荐">
+            <h2>🚀 方案一：Netlify（拖拽部署，2分钟搞定）</h2>
+            <p><strong>优势：</strong>完全免费、操作最简单、全球CDN加速、自动HTTPS</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <strong>打开部署页面</strong><br>
+                        点击下方按钮直接打开Netlify部署页面
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <strong>拖拽文件夹</strong><br>
+                        将整个 xitong 文件夹拖拽到网页的虚线框内
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <strong>等待部署</strong><br>
+                        等待1-2分钟，系统自动部署完成
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>
+                        <strong>获得链接</strong><br>
+                        获得类似 <code>https://amazing-name-123456.netlify.app</code> 的永久链接
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://app.netlify.com/drop" target="_blank" class="btn btn-large">
+                🚀 立即部署到 Netlify
+            </a>
+            
+            <div class="feature-list">
+                <div class="feature">✅ 完全免费</div>
+                <div class="feature">⚡ 全球加速</div>
+                <div class="feature">🔒 自动HTTPS</div>
+                <div class="feature">📱 支持手机访问</div>
+            </div>
+        </div>
+
+        <!-- 方案二：Vercel -->
+        <div class="method" data-badge="开发者友好">
+            <h2>⚡ 方案二：Vercel（高性能）</h2>
+            <p><strong>优势：</strong>速度极快、全球边缘网络、免费额度丰富</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>点击下方按钮访问Vercel</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>选择 "Browse all templates" 或直接拖拽文件夹</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>自动部署，获得 <code>https://your-project.vercel.app</code> 链接</div>
+                </div>
+            </div>
+
+            <a href="https://vercel.com/new" target="_blank" class="btn">
+                ⚡ 部署到 Vercel
+            </a>
+        </div>
+
+        <!-- 方案三：GitHub Pages -->
+        <div class="method" data-badge="最稳定">
+            <h2>🐙 方案三：GitHub Pages（免费稳定）</h2>
+            <p><strong>优势：</strong>完全免费、无限带宽、永不过期、支持自定义域名</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <strong>创建GitHub账号</strong><br>
+                        如果没有账号，先注册一个（免费）
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <strong>创建仓库</strong><br>
+                        仓库名：<code>image-order-system</code>，设为Public
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <strong>上传文件</strong><br>
+                        将所有文件拖拽上传到仓库
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>
+                        <strong>启用Pages</strong><br>
+                        在Settings → Pages中启用
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div>
+                        <strong>获得链接</strong><br>
+                        <code>https://你的用户名.github.io/image-order-system</code>
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://github.com/new" target="_blank" class="btn">
+                🐙 创建 GitHub 仓库
+            </a>
+        </div>
+
+        <!-- 方案四：Surge.sh -->
+        <div class="method" data-badge="命令行">
+            <h2>🌊 方案四：Surge.sh（命令行部署）</h2>
+            <p><strong>适合：</strong>喜欢命令行操作的用户</p>
+            
+            <div class="code-box">
+# 安装 surge（仅需一次）
+npm install -g surge
+
+# 在项目文件夹中运行
+surge
+
+# 按提示操作，获得类似链接：
+# https://your-domain.surge.sh
+            </div>
+
+            <a href="https://surge.sh" target="_blank" class="btn">
+                🌊 了解 Surge.sh
+            </a>
+        </div>
+
+        <!-- 方案五：Firebase Hosting -->
+        <div class="method" data-badge="谷歌出品">
+            <h2>🔥 方案五：Firebase Hosting</h2>
+            <p><strong>优势：</strong>谷歌云基础设施、全球CDN、免费额度</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>访问 Firebase Console，创建项目</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>启用 Hosting 服务</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>使用 Firebase CLI 或网页上传</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>获得 <code>https://project-id.web.app</code> 链接</div>
+                </div>
+            </div>
+
+            <a href="https://console.firebase.google.com" target="_blank" class="btn">
+                🔥 Firebase Console
+            </a>
+        </div>
+
+        <div class="warning-box">
+            <h3>⚠️ 重要提醒</h3>
+            <ul>
+                <li><strong>数据存储：</strong>当前系统使用浏览器本地存储，每个访问者的数据是独立的</li>
+                <li><strong>实时同步：</strong>如需多人实时协作，建议后续升级为云数据库版本</li>
+                <li><strong>备份建议：</strong>定期导出重要数据进行备份</li>
+                <li><strong>域名自定义：</strong>大部分平台支持绑定自己的域名</li>
+            </ul>
+        </div>
+
+        <div class="success-box">
+            <h3>🎉 部署成功后，您将获得：</h3>
+            <ul>
+                <li>✅ 一个永久的网络链接（如：https://your-app.netlify.app）</li>
+                <li>✅ 全球任何地方都能访问</li>
+                <li>✅ 手机、平板、电脑都支持</li>
+                <li>✅ HTTPS 安全访问</li>
+                <li>✅ 免费使用，无时间限制</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding: 30px; background: #f8f9ff; border-radius: 15px;">
+            <h2>🚀 推荐快速方案</h2>
+            <p style="font-size: 1.1em; margin-bottom: 20px;">
+                <strong>最快速度：</strong>直接使用 Netlify，拖拽文件夹即可，2分钟内获得链接！
+            </p>
+            <a href="https://app.netlify.com/drop" target="_blank" class="btn btn-large">
+                🎯 立即获得永久链接
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="index.html" class="btn">🏠 返回系统首页</a>
+            <button onclick="window.history.back()" class="btn">⬅️ 返回上页</button>
+        </div>
+    </div>
+
+    <script>
+        // 添加一些交互效果
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

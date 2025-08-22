@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获得 Bolt 风格的部署链接</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .hero {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        .platform {
+            background: #f8f9ff;
+            border: 2px solid #e1e8ed;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .platform:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+        .platform-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .platform h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        .demo-link {
+            background: #f0f8ff;
+            border: 1px solid #b3d9ff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            color: #0066cc;
+        }
+        .steps {
+            background: white;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        .step {
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        .step:last-child {
+            border-bottom: none;
+        }
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 12px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+        .btn-large {
+            padding: 15px 35px;
+            font-size: 16px;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .comparison-table th {
+            background: #f8f9ff;
+            font-weight: 600;
+            color: #333;
+        }
+        .feature-check {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .feature-partial {
+            color: #ffc107;
+            font-weight: bold;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffeaa7;
+            color: #856404;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #d4edda;
+            border: 2px solid #c3e6cb;
+            color: #155724;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>🚀 获得 Bolt 风格的部署链接</h1>
+            <p>将您的图片查单系统部署到现代化平台，获得专业的访问链接</p>
+        </div>
+
+        <div class="warning-box">
+            <h3>📋 关于 Bolt.new 链接</h3>
+            <p><strong>链接格式：</strong><code>https://zh9n30tn4e1u3b6me381e4ai2.bolt.host/</code></p>
+            <p><strong>平台特点：</strong>Bolt.new 是 StackBlitz 的 AI 代码生成平台，主要用于快速原型开发</p>
+            <p><strong>限制：</strong>通常为临时链接，适合演示，不适合长期生产使用</p>
+        </div>
+
+        <h2>🎯 类似 Bolt 的部署平台推荐</h2>
+
+        <!-- Netlify -->
+        <div class="platform" data-platform="netlify">
+            <div class="platform-badge">最像 Bolt</div>
+            <h3>🚀 Netlify - 拖拽即部署</h3>
+            <p><strong>体验最接近 Bolt.new</strong>，拖拽文件夹即可获得链接</p>
+            
+            <div class="demo-link">
+                示例链接：https://your-image-system-abc123.netlify.app
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>访问 Netlify Drop 页面</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>拖拽整个 xitong 文件夹到网页</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>等待 30 秒自动部署</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>获得永久访问链接</div>
+                </div>
+            </div>
+
+            <a href="https://app.netlify.com/drop" target="_blank" class="btn btn-large">
+                🚀 立即部署到 Netlify
+            </a>
+        </div>
+
+        <!-- Vercel -->
+        <div class="platform" data-platform="vercel">
+            <div class="platform-badge">最快速度</div>
+            <h3>⚡ Vercel - 全球边缘网络</h3>
+            <p>Next.js 团队打造，全球 CDN 加速，速度极快</p>
+            
+            <div class="demo-link">
+                示例链接：https://image-order-system.vercel.app
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>访问 Vercel 部署页面</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>拖拽项目文件夹或连接 Git</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>自动构建和部署</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>获得高性能访问链接</div>
+                </div>
+            </div>
+
+            <a href="https://vercel.com/new" target="_blank" class="btn">
+                ⚡ 部署到 Vercel
+            </a>
+        </div>
+
+        <!-- Surge.sh -->
+        <div class="platform" data-platform="surge">
+            <div class="platform-badge">最简单</div>
+            <h3>🌊 Surge.sh - 命令行部署</h3>
+            <p>专为静态网站设计，一条命令即可部署</p>
+            
+            <div class="demo-link">
+                示例链接：https://image-system-demo.surge.sh
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>安装：<code>npm install -g surge</code></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>在项目文件夹运行：<code>surge</code></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>按提示设置域名</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>立即获得访问链接</div>
+                </div>
+            </div>
+
+            <a href="https://surge.sh" target="_blank" class="btn">
+                🌊 了解 Surge.sh
+            </a>
+        </div>
+
+        <!-- Render -->
+        <div class="platform" data-platform="render">
+            <div class="platform-badge">功能丰富</div>
+            <h3>🎨 Render - 现代化部署</h3>
+            <p>支持静态网站和全栈应用，免费额度丰富</p>
+            
+            <div class="demo-link">
+                示例链接：https://image-system.onrender.com
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>连接 GitHub 仓库</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>选择静态网站部署</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>自动构建和部署</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>获得专业访问链接</div>
+                </div>
+            </div>
+
+            <a href="https://render.com" target="_blank" class="btn">
+                🎨 部署到 Render
+            </a>
+        </div>
+
+        <h2>📊 平台对比表</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>平台</th>
+                    <th>部署难度</th>
+                    <th>链接样式</th>
+                    <th>免费额度</th>
+                    <th>速度</th>
+                    <th>稳定性</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Netlify</strong></td>
+                    <td><span class="feature-check">⭐</span> 最简单</td>
+                    <td>app-name.netlify.app</td>
+                    <td><span class="feature-check">✓</span> 100GB/月</td>
+                    <td><span class="feature-check">⚡⚡⚡⚡</span></td>
+                    <td><span class="feature-check">⭐⭐⭐⭐⭐</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Vercel</strong></td>
+                    <td><span class="feature-check">⭐⭐</span> 简单</td>
+                    <td>app-name.vercel.app</td>
+                    <td><span class="feature-check">✓</span> 100GB/月</td>
+                    <td><span class="feature-check">⚡⚡⚡⚡⚡</span></td>
+                    <td><span class="feature-check">⭐⭐⭐⭐⭐</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Surge.sh</strong></td>
+                    <td><span class="feature-partial">⭐⭐⭐</span> 中等</td>
+                    <td>your-name.surge.sh</td>
+                    <td><span class="feature-check">✓</span> 无限制</td>
+                    <td><span class="feature-check">⚡⚡⚡</span></td>
+                    <td><span class="feature-check">⭐⭐⭐⭐</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Render</strong></td>
+                    <td><span class="feature-partial">⭐⭐</span> 简单</td>
+                    <td>app-name.onrender.com</td>
+                    <td><span class="feature-check">✓</span> 100GB/月</td>
+                    <td><span class="feature-check">⚡⚡⚡⚡</span></td>
+                    <td><span class="feature-check">⭐⭐⭐⭐</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="success-box">
+            <h3>🎯 推荐方案</h3>
+            <p><strong>最接近 Bolt 体验：</strong>选择 <strong>Netlify</strong>，拖拽文件夹即可获得链接</p>
+            <p><strong>最高性能：</strong>选择 <strong>Vercel</strong>，全球边缘网络加速</p>
+            <p><strong>最简单命令行：</strong>选择 <strong>Surge.sh</strong>，一条命令完成部署</p>
+        </div>
+
+        <h2>🚀 立即开始</h2>
+        <div style="text-align: center; margin: 30px 0;">
+            <p style="font-size: 18px; margin-bottom: 20px;">选择最适合您的部署方式：</p>
+            
+            <a href="https://app.netlify.com/drop" target="_blank" class="btn btn-large" style="margin: 10px;">
+                🚀 Netlify (推荐)
+            </a>
+            
+            <a href="https://vercel.com/new" target="_blank" class="btn btn-large" style="margin: 10px;">
+                ⚡ Vercel (最快)
+            </a>
+            
+            <br>
+            
+            <a href="一键获得网络链接.bat" class="btn" style="margin: 10px;">
+                💻 使用本地工具
+            </a>
+            
+            <a href="index.html" class="btn" style="margin: 10px;">
+                🏠 返回系统
+            </a>
+        </div>
+
+        <div class="warning-box">
+            <h3>💡 部署提示</h3>
+            <ul>
+                <li><strong>准备文件：</strong>确保所有文件都在 xitong 文件夹中</li>
+                <li><strong>主页文件：</strong>index.html 必须在根目录</li>
+                <li><strong>测试链接：</strong>部署后先测试所有功能是否正常</li>
+                <li><strong>分享链接：</strong>获得链接后可以立即分享给团队使用</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 添加平台卡片点击效果
+        document.querySelectorAll('.platform').forEach(platform => {
+            platform.addEventListener('click', function() {
+                // 移除其他平台的选中状态
+                document.querySelectorAll('.platform').forEach(p => {
+                    p.style.borderColor = '#e1e8ed';
+                });
+                
+                // 高亮当前平台
+                this.style.borderColor = '#667eea';
+                this.style.backgroundColor = '#f0f8ff';
+            });
+        });
+
+        // 添加按钮悬停效果
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.style.boxShadow = '0 10px 25px rgba(102, 126, 234, 0.4)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 8px 20px rgba(102, 126, 234, 0.3)';
+            });
+        });
+    </script>
+</body>
+</html>

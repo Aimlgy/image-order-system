@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>部署指南 - 图片查单及排单系统</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f7fa;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #667eea;
+        }
+        .method {
+            background: #f8f9ff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px 10px 10px 0;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 图片查单及排单系统 - 在线部署指南</h1>
+        
+        <div class="success">
+            <strong>✅ 好消息！</strong> 您的系统已经修复了输入框重叠问题，现在可以正常使用了！
+        </div>
+
+        <p>为了让别人能够通过链接访问您的系统，我们提供以下几种部署方案：</p>
+
+        <div class="method">
+            <h2>🚀 方案一：GitHub Pages（推荐）</h2>
+            <p><strong>优点：</strong>免费、稳定、支持自定义域名</p>
+            <p><strong>步骤：</strong></p>
+            <ol>
+                <li>访问 <a href="https://github.com" target="_blank">GitHub</a> 并注册账号</li>
+                <li>创建新仓库，命名为 <code>image-order-system</code></li>
+                <li>将系统文件上传到仓库</li>
+                <li>在仓库设置中启用 GitHub Pages</li>
+                <li>访问链接：<code>https://你的用户名.github.io/image-order-system</code></li>
+            </ol>
+            <a href="https://github.com/new" target="_blank" class="btn">创建 GitHub 仓库</a>
+        </div>
+
+        <div class="method">
+            <h2>☁️ 方案二：Netlify</h2>
+            <p><strong>优点：</strong>部署简单、自动更新、免费额度充足</p>
+            <p><strong>步骤：</strong></p>
+            <ol>
+                <li>访问 <a href="https://netlify.com" target="_blank">Netlify</a></li>
+                <li>注册并登录</li>
+                <li>拖拽整个项目文件夹到部署区域</li>
+                <li>获得类似 <code>https://随机名称.netlify.app</code> 的链接</li>
+            </ol>
+            <a href="https://app.netlify.com/drop" target="_blank" class="btn">直接部署到 Netlify</a>
+        </div>
+
+        <div class="method">
+            <h2>⚡ 方案三：Vercel</h2>
+            <p><strong>优点：</strong>速度快、CDN加速、免费</p>
+            <p><strong>步骤：</strong></p>
+            <ol>
+                <li>访问 <a href="https://vercel.com" target="_blank">Vercel</a></li>
+                <li>使用GitHub账号登录</li>
+                <li>导入项目仓库</li>
+                <li>自动部署完成</li>
+            </ol>
+            <a href="https://vercel.com/new" target="_blank" class="btn">部署到 Vercel</a>
+        </div>
+
+        <div class="method">
+            <h2>📁 方案四：本地共享</h2>
+            <p><strong>适用：</strong>内网或局域网访问</p>
+            <p><strong>Windows系统：</strong></p>
+            <div class="code">
+# 安装Python（如果没有）
+# 在项目文件夹中打开命令行，运行：
+python -m http.server 8000
+
+# 然后访问：http://你的IP地址:8000
+# 局域网内其他人可以通过这个地址访问
+            </div>
+            <p><strong>或者使用Node.js：</strong></p>
+            <div class="code">
+# 安装serve
+npm install -g serve
+
+# 在项目文件夹运行
+serve -s . -p 8000
+            </div>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ 注意事项：</strong>
+            <ul>
+                <li>部署前请确保所有文件都在同一个文件夹中</li>
+                <li>如果使用GitHub Pages，确保主页文件名为 <code>index.html</code></li>
+                <li>部署后如需修改，重新上传文件即可</li>
+                <li>免费服务通常有带宽和访问量限制</li>
+            </ul>
+        </div>
+
+        <h2>🛠️ 快速部署包</h2>
+        <p>我已经为您准备好了完整的项目文件，包括：</p>
+        <ul>
+            <li>✅ 修复后的登录界面（输入框不再重叠）</li>
+            <li>✅ 完整的功能模块</li>
+            <li>✅ 响应式设计</li>
+            <li>✅ 示例数据</li>
+        </ul>
+
+        <div class="success">
+            <strong>🎉 项目已准备就绪！</strong><br>
+            您可以选择以上任一方案将系统部署到网上，然后分享链接给团队成员使用。
+        </div>
+
+        <h2>📞 技术支持</h2>
+        <p>如果在部署过程中遇到问题，可以：</p>
+        <ul>
+            <li>检查浏览器控制台是否有错误信息</li>
+            <li>确保所有文件路径正确</li>
+            <li>验证网络连接是否正常</li>
+        </ul>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="index.html" class="btn">返回系统首页</a>
+        </div>
+    </div>
+</body>
+</html>

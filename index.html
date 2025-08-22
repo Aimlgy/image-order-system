@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片查单及排单系统</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 登录界面 -->
+    <div id="loginContainer" class="container">
+        <div class="login-box">
+            <div class="login-header">
+                <h1><i class="fas fa-camera"></i> 图片查单及排单系统</h1>
+                <p>全流程数字化管理平台</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" placeholder="用户名" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="密码" required>
+                </div>
+                <div class="form-group">
+                    <select id="userRole" required>
+                        <option value="">选择角色</option>
+                        <option value="admin">管理员</option>
+                        <option value="operator">运营</option>
+                        <option value="assistant">助理</option>
+                        <option value="designer">美工</option>
+                    </select>
+                </div>
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> 登录
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 主界面 -->
+    <div id="mainContainer" class="container hidden">
+        <!-- 顶部导航 -->
+        <header class="header">
+            <div class="header-left">
+                <h1><i class="fas fa-camera"></i> 图片查单及排单系统</h1>
+            </div>
+            <div class="header-right">
+                <span class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="currentUser">用户</span>
+                    (<span id="currentRole">角色</span>)
+                </span>
+                <button id="logoutBtn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> 退出
+                </button>
+            </div>
+        </header>
+
+        <!-- 侧边导航 -->
+        <nav class="sidebar">
+            <ul class="nav-menu">
+                <li class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>工作台</span>
+                </li>
+                <li class="nav-item" data-page="samples">
+                    <i class="fas fa-box"></i>
+                    <span>样品管理</span>
+                </li>
+                <li class="nav-item" data-page="requests">
+                    <i class="fas fa-edit"></i>
+                    <span>需求录入</span>
+                </li>
+                <li class="nav-item" data-page="tasks">
+                    <i class="fas fa-tasks"></i>
+                    <span>任务管理</span>
+                </li>
+                <li class="nav-item" data-page="images">
+                    <i class="fas fa-images"></i>
+                    <span>图片库</span>
+                </li>
+                <li class="nav-item" data-page="approval">
+                    <i class="fas fa-check-circle"></i>
+                    <span>审核中心</span>
+                </li>
+                <li class="nav-item" data-page="board">
+                    <i class="fas fa-columns"></i>
+                    <span>进度看板</span>
+                </li>
+                <li class="nav-item" data-page="reports">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>统计报表</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 工作台页面 -->
+            <div id="dashboard" class="page active">
+                <div class="page-header">
+                    <h2><i class="fas fa-tachometer-alt"></i> 工作台</h2>
+                    <p>系统概览和快速操作</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalSamples">0</h3>
+                            <p>总样品数</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="pendingTasks">0</h3>
+                            <p>待处理任务</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="inProgressTasks">0</h3>
+                            <p>制作中</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="completedTasks">0</h3>
+                            <p>已完成</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h3>快速操作</h3>
+                    <div class="action-buttons">
+                        <button class="action-btn" onclick="switchPage('samples')">
+                            <i class="fas fa-plus"></i>
+                            添加样品
+                        </button>
+                        <button class="action-btn" onclick="switchPage('requests')">
+                            <i class="fas fa-edit"></i>
+                            创建需求
+                        </button>
+                        <button class="action-btn" onclick="switchPage('tasks')">
+                            <i class="fas fa-tasks"></i>
+                            查看任务
+                        </button>
+                        <button class="action-btn" onclick="switchPage('board')">
+                            <i class="fas fa-columns"></i>
+                            进度看板
+                        </button>
+                        <button class="action-btn" onclick="window.showDeployModal()" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+                            <i class="fas fa-globe"></i>
+                            获得网络链接
+                        </button>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h3>最近活动</h3>
+                    <div id="activityList" class="activity-list">
+                        <!-- 活动记录将动态加载 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 样品管理页面 -->
+            <div id="samples" class="page">
+                <div class="page-header">
+                    <h2><i class="fas fa-box"></i> 样品管理</h2>
+                    <button class="btn-primary" onclick="showAddSampleModal()">
+                        <i class="fas fa-plus"></i> 添加样品
+                    </button>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" id="sampleSearch" placeholder="搜索样品编号、负责人...">
+                    <button onclick="searchSamples()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table id="samplesTable" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>样品编号</th>
+                                <th>负责人</th>
+                                <th>放置位置</th>
+                                <th>状态</th>
+                                <th>录入时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="samplesTableBody">
+                            <!-- 数据将动态加载 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 需求录入页面 -->
+            <div id="requests" class="page">
+                <div class="page-header">
+                    <h2><i class="fas fa-edit"></i> 文案与图片需求录入</h2>
+                </div>
+                
+                <form id="requestForm" class="form-container">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>关联样品</label>
+                            <select id="relatedSample" required>
+                                <option value="">选择样品</option>
+                                <!-- 选项将动态加载 -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>出图时间</label>
+                            <input type="date" id="deadline" required>
+                        </div>
+                        <div class="form-group">
+                            <label>图片规格</label>
+                            <select id="imageSpec">
+                                <option value="主图">主图</option>
+                                <option value="详情图">详情图</option>
+                                <option value="场景图">场景图</option>
+                                <option value="对比图">对比图</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>优先级</label>
+                            <select id="priority">
+                                <option value="普通">普通</option>
+                                <option value="紧急">紧急</option>
+                                <option value="非常紧急">非常紧急</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>文案内容</label>
+                        <textarea id="copyContent" rows="4" placeholder="请输入产品文案内容..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>图片需求描述</label>
+                        <textarea id="imageRequirement" rows="4" placeholder="请描述图片拍摄要求、风格、场景等..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>参考图片</label>
+                        <input type="file" id="referenceImages" multiple accept="image/*">
+                        <div id="imagePreview" class="image-preview"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>备注</label>
+                        <textarea id="remarks" rows="2" placeholder="其他备注信息..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i> 提交需求
+                        </button>
+                        <button type="reset" class="btn-secondary">
+                            <i class="fas fa-redo"></i> 重置
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 任务管理页面 -->
+            <div id="tasks" class="page">
+                <div class="page-header">
+                    <h2><i class="fas fa-tasks"></i> 任务管理</h2>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-status="all">全部</button>
+                        <button class="filter-btn" data-status="pending">待拍摄</button>
+                        <button class="filter-btn" data-status="shooting">拍摄中</button>
+                        <button class="filter-btn" data-status="processing">制作中</button>
+                        <button class="filter-btn" data-status="review">审核中</button>
+                        <button class="filter-btn" data-status="completed">已完成</button>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table id="tasksTable" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>任务ID</th>
+                                <th>样品编号</th>
+                                <th>需求类型</th>
+                                <th>负责人</th>
+                                <th>状态</th>
+                                <th>优先级</th>
+                                <th>截止时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tasksTableBody">
+                            <!-- 数据将动态加载 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 图片库页面 -->
+            <div id="images" class="page">
+                <div class="page-header">
+                    <h2><i class="fas fa-images"></i> 图片库</h2>
+                    <button class="btn-primary" onclick="showUploadModal()">
+                        <i class="fas fa-upload"></i> 上传图片
+                    </button>
+                </div>
+                
+                <div class="image-filters">
+                    <select id="imageCategory">
+                        <option value="">全部分类</option>
+                        <option value="主图">主图</option>
+                        <option value="详情图">详情图</option>
+                        <option value="场景图">场景图</option>
+                        <option value="对比图">对比图</option>
+                    </select>
+                    <input type="text" id="imageSearch" placeholder="搜索图片名称...">
+                    <button onclick="searchImages()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <div id="imageGallery" class="image-gallery">
+                    <!-- 图片将动态加载 -->
+                </div>
+            </div>
+
+            <!-- 审核中心页面 -->
+            <div id="approval" class="page">
+                <div class="page-header">
+                    <h2><i class="fas fa-check-circle"></i> 审核中心</h2>
+                </div>
+                
+                <div id="approvalList" class="approval-list">
+                    <!-- 待审核项目将动态加载 -->
+                </div>
+            </div>
+
+            <!-- 进度看板页面 -->
+            <div id="board" class="page">
+                <div class="page-header">
+                    <h2><i class="fas fa-columns"></i> 进度看板</h2>
+                </div>
+                
+                <div class="kanban-board">
+                    <div class="kanban-column" data-status="pending">
+                        <h3>待拍摄 <span class="count" id="pendingCount">0</span></h3>
+                        <div class="kanban-cards" id="pendingCards">
+                            <!-- 卡片将动态加载 -->
+                        </div>
+                    </div>
+                    <div class="kanban-column" data-status="shooting">
+                        <h3>拍摄中 <span class="count" id="shootingCount">0</span></h3>
+                        <div class="kanban-cards" id="shootingCards">
+                            <!-- 卡片将动态加载 -->
+                        </div>
+                    </div>
+                    <div class="kanban-column" data-status="processing">
+                        <h3>制作中 <span class="count" id="processingCount">0</span></h3>
+                        <div class="kanban-cards" id="processingCards">
+                            <!-- 卡片将动态加载 -->
+                        </div>
+                    </div>
+                    <div class="kanban-column" data-status="review">
+                        <h3>审核中 <span class="count" id="reviewCount">0</span></h3>
+                        <div class="kanban-cards" id="reviewCards">
+                            <!-- 卡片将动态加载 -->
+                        </div>
+                    </div>
+                    <div class="kanban-column" data-status="completed">
+                        <h3>已完成 <span class="count" id="completedCount">0</span></h3>
+                        <div class="kanban-cards" id="completedCards">
+                            <!-- 卡片将动态加载 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 统计报表页面 -->
+            <div id="reports" class="page">
+                <div class="page-header">
+                    <h2><i class="fas fa-chart-bar"></i> 统计报表</h2>
+                    <button class="btn-primary" onclick="exportReport()">
+                        <i class="fas fa-download"></i> 导出报表
+                    </button>
+                </div>
+                
+                <div class="report-filters">
+                    <input type="date" id="startDate">
+                    <input type="date" id="endDate">
+                    <select id="reportType">
+                        <option value="daily">日报</option>
+                        <option value="weekly">周报</option>
+                        <option value="monthly">月报</option>
+                    </select>
+                    <button onclick="generateReport()">生成报表</button>
+                </div>
+
+                <div class="report-charts">
+                    <div class="chart-container">
+                        <h3>任务完成情况</h3>
+                        <canvas id="taskChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>人员工作量统计</h3>
+                        <canvas id="workloadChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 模态框 -->
+    <!-- 添加样品模态框 -->
+    <div id="addSampleModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>添加样品</h3>
+                <span class="close" onclick="closeModal('addSampleModal')">&times;</span>
+            </div>
+            <form id="addSampleForm">
+                <div class="form-group">
+                    <label>样品编号</label>
+                    <input type="text" id="sampleCode" required>
+                </div>
+                <div class="form-group">
+                    <label>负责人</label>
+                    <input type="text" id="sampleOwner" required>
+                </div>
+                <div class="form-group">
+                    <label>放置位置</label>
+                    <input type="text" id="sampleLocation" required>
+                </div>
+                <div class="form-group">
+                    <label>状态</label>
+                    <select id="sampleStatus">
+                        <option value="未确认">未确认</option>
+                        <option value="已确认">已确认</option>
+                        <option value="已使用">已使用</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-primary">保存</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('addSampleModal')">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 上传图片模态框 -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>上传图片</h3>
+                <span class="close" onclick="closeModal('uploadModal')">&times;</span>
+            </div>
+            <form id="uploadForm">
+                <div class="form-group">
+                    <label>选择图片</label>
+                    <input type="file" id="uploadFiles" multiple accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <label>图片分类</label>
+                    <select id="uploadCategory">
+                        <option value="主图">主图</option>
+                        <option value="详情图">详情图</option>
+                        <option value="场景图">场景图</option>
+                        <option value="对比图">对比图</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>关联任务</label>
+                    <select id="relatedTask">
+                        <option value="">选择任务</option>
+                        <!-- 选项将动态加载 -->
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-primary">上传</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('uploadModal')">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="auto-deploy.js"></script>
+</body>
+</html>
